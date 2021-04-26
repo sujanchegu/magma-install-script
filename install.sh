@@ -59,8 +59,13 @@ sudo curl -L "https://github.com/docker/compose/releases/download/1.28.4/docker-
 sudo chmod +x /usr/local/bin/docker-compose
 
 sudo apt-get install wget
+sudo apt-get install qemu qemu-kvm libvirt-clients libvirt-daemon-system virtinst bridge-utils
 wget "https://github.com/magma/magma/archive/refs/tags/v1.4.0.zip"
 
 
-echo "Please logout and back in for some changes to take place "
-echo "It is advised to restart the system instead"
+echo "Please restart the system"
+echo "After reboot, run after-reboot.sh file created on the desktop with sudo previleges"
+
+echo "sudo systemctl enable libvirtd" >> /home/$1/Desktop/after-reboot.sh
+echo "sudo systemctl start libvirtd" >> /home/$1/Desktop/after-reboot.sh
+chmod +x /home/$1/Desktop/after-reboot.sh 
